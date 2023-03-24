@@ -217,3 +217,24 @@ def f(x):
     return x-2
 
 print(biseccion(1,2,f,0.001))
+
+def insertSort(n,l,p):
+    lon = len(l)
+    if(lon == 0):
+        return p
+    elif(n > l[lon-1]):
+        aux = [None]*len(p)
+        for i in range(lon,len(p)-1):
+            aux[i+1] = p[i]
+        p = aux
+        p[lon] = n
+        while (lon != 0):
+            p[lon-1] = l[lon-1]
+            lon = lon-1
+        return p
+    else:
+        p[lon-1] = l[lon-1]
+        return insertSort(n,l[:-1],p)
+
+print(insertSort(-2,[-3,0,3,8,11],[None]*6))
+
